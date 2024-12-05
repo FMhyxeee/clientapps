@@ -68,5 +68,10 @@ fn Home() -> Element {
 
 #[component]
 fn NotFound(segments: Vec<String>) -> Element {
-    todo!()
+    let path = segments.join("/");
+    rsx! {
+        div { class: "flex flex-col items-center justify-center h-screen",
+            h1 {class: "text-3xl p-4", "Not Found: The page `/{path}` does not exist."}
+        }
+    }
 }
