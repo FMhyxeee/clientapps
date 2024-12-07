@@ -30,6 +30,7 @@ pub async fn get_story_item_by_id(id: i64) -> Result<StoryItem> {
 }
 
 // only retrieve top level comments
+#[allow(dead_code)]
 pub async fn get_story_comments(item: StoryItem) -> Result<StoryData> {
     let comments_futures = item.kids.iter().map(|id| get_comment_by_id(*id));
 
@@ -44,6 +45,7 @@ pub async fn get_story_comments(item: StoryItem) -> Result<StoryData> {
     Ok(story_data)
 }
 
+#[allow(dead_code)]
 pub async fn get_comment_by_id(id: i64) -> Result<Comment> {
     let url = format!("https://hacker-news.firebaseio.com/v0/item/{}.json", id);
     let comment: Comment = reqwest::get(url).await?.json().await?;

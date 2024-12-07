@@ -1,4 +1,7 @@
-pub mod api;
+pub(crate) mod api;
+mod ui;
+
+pub use ui::App;
 
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
